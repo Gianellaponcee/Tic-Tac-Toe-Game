@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div class="container">
+        <h1 id="playerText">Tic Tac Toe</h1>
+        <button id="restartBtn">Restart</button>
+    <div class="button-wrapper">
+        <button class="confetti-button">Yay🎊</button>
+    </div>
+        <div id="gameboard">
+            <div class="box" id="0"></div>
+            <div class="box" id="1"></div>
+            <div class="box" id="2"></div>
+            <div class="box" id="3"></div>
+            <div class="box" id="4"></div>
+            <div class="box" id="5"></div>
+            <div class="box" id="6"></div>
+            <div class="box" id="7"></div>
+            <div class="box" id="8"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="/game_logic.js"></script>
+    <script>
+        document.getElementsByClassName("confetti-button")[0].addEventListener("click", () => {
+            let canvas = document.createElement("canvas");
+            canvas.width = 660;
+            canvas.height = 600;
+            let container = document.getElementsByClassName("button-wrapper")[0];
+            container.appendChild(canvas);
+            
+            let confetti_button = confetti.create(canvas);
+            confetti_button({
+                particleCount: 200,
+                spread: 200,
+                startVelocity: 15,
+                scalar: 0.9,
+                ticks: 90,
+            })
+            confetti_button().then(() => container.removeChild(canvas));
+        });
+    </script>
+</body>
+</html>
